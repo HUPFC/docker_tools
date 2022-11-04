@@ -4,7 +4,7 @@ RUN mv  /etc/apt/sources.list  /etc/apt/sources.list.bak
 ADD ./sources.list /etc/apt/
 RUN apt-get clean all && apt-get update && apt-get install -y \
 libevent-dev pkg-config libxml2 libxml2-dev openssl libssl-dev sqlite3 \
-libsqlite3-dev libpng-dev libjpeg-dev libfreetype-dev
+libsqlite3-dev libpng-dev libjpeg-dev libfreetype-dev \
  && docker-php-ext-install pdo_mysql mysqli \
  && docker-php-ext-install bcmath exif gd iconv pcntl
 
