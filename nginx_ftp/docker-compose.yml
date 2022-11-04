@@ -1,0 +1,33 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./data:/usr/share/nginx/html
+      - ./nginx/logs:/var/log/nginx
+      - ./nginx/etc/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/etc/conf.d:/etc/nginx/conf.d
+    restart: always
+  vsftpd:
+    image: shourai/vsftpd-alpine:latest
+    container_name: vsftp
+    environment:
+      - FTP_USER=${FTP_USER}
+      - FTP_PASS=${FTP_PASS}
+      - PASV_ENABLE=YES
+      - PASV_ADDRESS=${PASV_ADDRESS}
+      - PASV_MIN_PORT=21100
+      - PASV_MAX_PORT=21110
+      - ANON_ENABLE=NO
+      - NO_ANON_PASSWD=NO
+      - ANON_ROOT=/var/ftp
+    volumes:
+      - ./data:/home/${FTP_USER} #与FPT_USER目录一致
+    ports:
+      - "20:20"
+      - "21:21"
+      - "21100-21110:21100-21110"
+    restart: always
