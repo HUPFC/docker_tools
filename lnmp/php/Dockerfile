@@ -1,7 +1,20 @@
 FROM php:7.4-fpm
-RUN cat /etc/apt/sources.list
 RUN mv  /etc/apt/sources.list  /etc/apt/sources.list.bak
-ADD ./sources.list /etc/apt/
+RUN echo "#http://mirrors.163.com/debian/为软件源也可以为其他的 bullseye为版本代号 main non-free contrib区别如下 \
+          deb http://mirrors.163.com/debian/ bullseye main non-free contrib \
+          deb http://mirrors.163.com/debian/ bullseye-updates main non-free contrib \
+          deb http://mirrors.163.com/debian/ bullseye-backports main non-free contrib \
+          deb-src http://mirrors.163.com/debian/ bullseye main non-free contrib \
+          deb-src http://mirrors.163.com/debian/ bullseye-updates main non-free contrib \
+          deb-src http://mirrors.163.com/debian/ bullseye-backports main non-free contrib \
+          #deb http://mirrors.163.com/debian-security/ bullseye/updates main non-free contrib \
+          #deb http://mirrors.ustc.edu.cn/debian-security/ bullseye/updates main non-free contrib \
+          #deb-src http://mirrors.163.com/debian-security/ bullseye/updates main non-free contrib \
+          #deb-src http://mirrors.ustc.edu.cn/debian-security/ bullseye/updates main non-free contrib \
+          deb http://mirrors.ustc.edu.cn/debian-security/ stable-security main non-free contrib \
+          deb-src http://mirrors.ustc.edu.cn/debian-security/ stable-security main non-free contrib" > /etc/apt/sources.list
+RUN cat /etc/apt/sources.list
+# ADD ./sources.list /etc/apt/
 RUN apt-get clean all && apt-get update && apt-get install -y \
 libevent-dev pkg-config libxml2 libxml2-dev openssl libssl-dev sqlite3 \
 libsqlite3-dev libpng-dev libjpeg-dev libfreetype-dev \
