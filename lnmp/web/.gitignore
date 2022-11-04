@@ -1,2 +1,5 @@
 *
 !.gitignore
+!cli.php
+!index.html
+!index.php
