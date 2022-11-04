@@ -9,7 +9,7 @@ libsqlite3-dev libpng-dev libjpeg-dev libfreetype-dev \
  && docker-php-ext-install bcmath exif gd iconv pcntl
 
 RUN pecl install redis && docker-php-ext-enable redis \
-# && docker-php-ext-install sockets && docker-php-ext-enable sockets \
+&& docker-php-ext-install sockets && docker-php-ext-enable sockets \
 && pecl install event-3.0.6 && docker-php-ext-enable event \
 &&  rm -rf /tmp/pear
 
