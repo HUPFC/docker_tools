@@ -13,7 +13,7 @@ services:
     restart: always
   php:
     build: ./php
-    image: php:7.4
+    image: php
     container_name: php
     restart: always
     expose:
