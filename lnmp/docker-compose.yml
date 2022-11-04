@@ -7,7 +7,7 @@ services:
       - ${NGINX_PORT}:80
     volumes:
       - ./web:/usr/share/nginx/html
-      - ./nginx/logs:/var/log/nginx
+      - ./nginx/log:/var/log/nginx
       - ./nginx/etc/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/etc/conf.d:/etc/nginx/conf.d
     restart: always
