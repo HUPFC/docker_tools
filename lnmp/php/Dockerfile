@@ -1,7 +1,7 @@
 FROM php:7.4-fpm
 RUN cat /etc/apt/sources.list
 RUN mv  /etc/apt/sources.list  /etc/apt/sources.list.bak
-ADD sources.list /etc/apt/
+ADD ./sources.list /etc/apt/
 RUN apt-get clean all && apt-get update && apt-get install -y \
 libevent-dev pkg-config libxml2 libxml2-dev openssl libssl-dev sqlite3 \
 libsqlite3-dev libpng-dev libjpeg-dev libfreetype-dev \
