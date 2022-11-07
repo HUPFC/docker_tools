@@ -11,9 +11,9 @@ std("mysql test container");
 $config = [
     'host'     => 'mysql',
     'user'     => 'obox_prod',
-    'password' => 'kkbh_prod',
+    'password' => 'nojhPPkZ',
     'database' => 'mysql',
-    'charset'  => 'utf8'
+    'charset'  => 'utf8',
 ];
 $dsn    = sprintf(
     "mysql:host=%s;dbname=%s;charset=%s",
