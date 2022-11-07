@@ -24,8 +24,8 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - ./web:/var/www
-      - ./php/php.ini:/usr/local/etc/php/php.ini
-      - ./php/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./php/etc/php.ini:/usr/local/etc/php/php.ini
+      - ./php/etc/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf
   mysql:
     image: mysql:8
     restart: always
