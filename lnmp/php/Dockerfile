@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:7.4.33-fpm
 RUN mv  /etc/apt/sources.list  /etc/apt/sources.list.bak
 ADD sources.list /etc/apt/
 RUN cat /etc/apt/sources.list
