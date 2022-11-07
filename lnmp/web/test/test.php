@@ -10,8 +10,8 @@ std("mysql test container");
 
 $config = [
     'host'     => 'mysql',
-    'user'     => 'obox_prod',
-    'password' => 'nojhPPkZ',
+    'user'     => 'root',
+    'password' => '123456',
     'database' => 'mysql',
     'charset'  => 'utf8',
 ];
