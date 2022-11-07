@@ -1,0 +1,56 @@
+version: "3"
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    hostname: elasticsearch
+    image: elasticsearch:7.17.5
+    restart: always
+    privileged: true
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - ./elasticsearch/plugins:/usr/share/elasticsearch/plugins
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+      - ./elasticsearch/logs:/usr/share/elasticsearch/logs
+      - ./elasticsearch/es-master.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512M -Xmx512M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
+        max-file: "10"
+
+  es-head:
+    container_name: elasticsearch-head
+    image: mobz/elasticsearch-head:5
+    restart: always
+    ports:
+      - 9100:9100
+    depends_on:
+      - elasticsearch
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
+        max-file: "10"
+
+  kibana:
+    container_name: kibana
+    image: kibana:7.17.5
+    restart: always
+    ports:
+      - 5601:5601
+    volumes:
+      - ./kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    environment:
+      - elasticsearch.hosts=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1g"
+        max-file: "10"
