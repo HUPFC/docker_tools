@@ -18,7 +18,7 @@ services:
       - webnet
   php:
     build: ./php
-    image: php
+    image: php:7.4-local
     container_name: php
     restart: always
     expose:
