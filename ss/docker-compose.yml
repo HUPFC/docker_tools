@@ -1,0 +1,16 @@
+version: '3'
+services:
+  shadowsocks:
+    image: dockage/shadowsocks-server:latest
+    container_name: shadowsocks
+    ports:
+      - "11001:11001"
+    environment:
+      - SS_PASSWORD=aqwe@1#WEqw13
+      - SS_SERVER_PORT=11001
+      - SS_METHOD=aes-256-cfb
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"
+        max-file: "5"
