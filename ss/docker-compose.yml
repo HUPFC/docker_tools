@@ -6,11 +6,22 @@ services:
     ports:
       - "11001:11001"
     environment:
-      - SS_PASSWORD=aqwe@1#WEqw13
-      - SS_SERVER_PORT=11001
+      - SS_PASSWORD=xxxxxx
+      - SS_SERVER_PORT=10000
       - SS_METHOD=aes-256-cfb
     logging:
       driver: "json-file"
       options:
         max-size: "200m"
         max-file: "5"
+  shadowsocks-client:
+    image: xjdata/shadowsocks-client
+    ports:
+      - "1080:1080"
+    environment:
+      - SERVER_ADDR=xxxxxx
+      - SERVER_PORT=10000
+      - LOCAL_ADDR=0.0.0.0
+      - LOCAL_PORT=1080
+      - PASSWORD=xxxxxxx
+      - METHOD=aes-256-cfb
